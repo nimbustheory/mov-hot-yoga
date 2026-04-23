@@ -274,13 +274,13 @@ function PageHero({ title, subtitle, image }) {
     <div style={{ position: "relative", minHeight: 220, display: "flex", alignItems: "flex-end", padding: "28px 20px 24px", background: showImage ? "none" : `linear-gradient(165deg, ${T.bg} 0%, hsl(18,10%,14%) 100%)`, color: "#fff", overflow: "hidden", marginBottom: 16 }}>
       {showImage && (
         <>
-          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.79)" }} />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.035) 50%, rgba(0,0,0,0.32) 100%)" }} />
+          <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.83)" }} />
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.25) 100%)" }} />
         </>
       )}
-      <div style={{ position: "relative" }}>
-        <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: 34, margin: 0, fontWeight: 700, letterSpacing: "-0.02em" }}>{title}</h1>
-        {subtitle && <p style={{ fontSize: 14, color: "#d8cec8", margin: "4px 0 0" }}>{subtitle}</p>}
+      <div style={{ position: "relative", maxWidth: "85%" }}>
+        <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: 44, lineHeight: 1.02, margin: 0, fontWeight: 700, letterSpacing: "-0.02em", textShadow: "0 2px 8px rgba(0,0,0,0.25)" }}>{title}</h1>
+        {subtitle && <p style={{ fontSize: 14, color: "#f5ece6", margin: "8px 0 0", textShadow: "0 1px 4px rgba(0,0,0,0.3)" }}>{subtitle}</p>}
       </div>
     </div>
   );
@@ -299,16 +299,16 @@ function HomePage() {
   return (
     <div className="pb-6">
       {/* Hero */}
-      <section style={{ position: "relative", color: "#fff", padding: "36px 22px", minHeight: 260, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${STUDIO_IMAGES.hero})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.79)" }} />
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.035) 50%, rgba(0,0,0,0.32) 100%)" }} />
-        <div style={{ position: "relative" }}>
-          <p style={{ color: T.accent, fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 8 }}>{formatDateLong(today)}</p>
-          <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: 48, lineHeight: 0.95, letterSpacing: "-0.02em", margin: 0, fontWeight: 700 }}>
+      <section style={{ position: "relative", color: "#fff", padding: "44px 22px 32px", minHeight: 300, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${STUDIO_IMAGES.hero})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.83)" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.25) 100%)" }} />
+        <div style={{ position: "relative", maxWidth: "85%" }}>
+          <p style={{ color: "#fff", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.2em", marginBottom: 10, textShadow: "0 1px 4px rgba(0,0,0,0.4)" }}>{formatDateLong(today)}</p>
+          <h1 style={{ fontFamily: "'Syne', sans-serif", fontSize: 56, lineHeight: 0.95, letterSpacing: "-0.02em", margin: 0, fontWeight: 700, textShadow: "0 2px 10px rgba(0,0,0,0.3)" }}>
             {STUDIO_CONFIG.heroLine1}<br/>
-            <span style={{ color: T.accent, fontStyle: "italic", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, fontSize: 52 }}>{STUDIO_CONFIG.heroLine2}</span>
+            <span style={{ color: "#ffd9cd", fontStyle: "italic", fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, fontSize: 60 }}>{STUDIO_CONFIG.heroLine2}</span>
           </h1>
-          <p style={{ color: "#c8b8b0", fontSize: 13, maxWidth: 280, marginTop: 10, lineHeight: 1.5 }}>{STUDIO_CONFIG.description}</p>
+          <p style={{ color: "#f5ece6", fontSize: 13, maxWidth: "85%", marginTop: 12, lineHeight: 1.5, textShadow: "0 1px 4px rgba(0,0,0,0.3)" }}>{STUDIO_CONFIG.description}</p>
         </div>
       </section>
 
@@ -535,7 +535,7 @@ function CommunityPage() {
   const { feedCelebrations, celebrateFeed } = useContext(AppContext);
   return (
     <div>
-      <PageHero title="Community" subtitle="Celebrate each other's journey in the MÖVment" image={STUDIO_IMAGES.community} />
+      <PageHero title="Community" subtitle="Celebrate wins across the MÖVment" image={STUDIO_IMAGES.community} />
       <div style={{ padding: "0 16px", display: "flex", flexDirection: "column", gap: 10 }}>
         {COMMUNITY_FEED.map(item => {
           const myC = feedCelebrations[item.id] || 0;
@@ -984,7 +984,7 @@ function PracticeCardFull({ practice, variant, expanded, onToggle }) {
 function StatBox({ label, value }) { return (<div style={{ background: T.bgDim, borderRadius: 8, padding: "10px 12px", textAlign: "center" }}><div style={{ fontFamily: "'Syne', sans-serif", fontSize: 22, fontWeight: 700, color: T.text }}>{value}</div><div style={{ fontSize: 11, color: T.textMuted, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.05em" }}>{label}</div></div>); }
 function EmptyState({ icon: Icon, message, sub }) { return (<div style={{ textAlign: "center", padding: "32px 16px", background: T.bgCard, borderRadius: 12, border: `1px solid ${T.border}` }}><Icon size={28} color={T.textFaint} style={{ marginBottom: 8 }} /><p style={{ fontWeight: 600, fontSize: 14, color: T.textMuted, margin: 0 }}>{message}</p>{sub && <p style={{ fontSize: 12, color: T.textFaint, margin: "4px 0 0" }}>{sub}</p>}</div>); }
 function InputField({ label, value, onChange, placeholder, multiline }) { const common = { width: "100%", padding: "10px 14px", borderRadius: 8, border: `1px solid ${T.border}`, background: T.bgDim, fontSize: 14, color: T.text, fontFamily: "inherit", outline: "none", boxSizing: "border-box" }; return (<div><label style={{ display: "block", fontSize: 12, fontWeight: 600, color: T.textMuted, marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>{label}</label>{multiline ? <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} rows={3} style={{ ...common, resize: "vertical" }} /> : <input value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} style={common} />}</div>); }
-function CTACard() { const { setPage } = useContext(AppContext); return (<div style={{ position: "relative", borderRadius: 14, padding: "24px 20px", color: "#fff", textAlign: "center", overflow: "hidden" }}><div style={{ position: "absolute", inset: 0, backgroundImage: `url(${STUDIO_IMAGES.grandOpening})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.79)" }} /><div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.035) 50%, rgba(0,0,0,0.32) 100%)" }} /><div style={{ position: "relative" }}><Leaf size={28} color={T.accent} style={{ marginBottom: 8 }} /><h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, margin: "0 0 8px", fontWeight: 700 }}>New to MÖV?</h3><p style={{ fontSize: 13, color: "#c8b8b0", margin: "0 0 16px", lineHeight: 1.5 }}>Get your first month of unlimited classes for only $49. Hot yoga, barre, candlelight, sculpt — try it all.</p><button onClick={() => setPage("membership")} style={{ padding: "12px 32px", borderRadius: 8, border: "none", fontWeight: 700, cursor: "pointer", background: T.accent, color: "#fff", fontSize: 16, fontFamily: "'Syne', sans-serif" }}>Join the MÖVment</button></div></div>); }
+function CTACard() { const { setPage } = useContext(AppContext); return (<div style={{ position: "relative", borderRadius: 14, padding: "24px 20px", color: "#fff", textAlign: "center", overflow: "hidden" }}><div style={{ position: "absolute", inset: 0, backgroundImage: `url(${STUDIO_IMAGES.grandOpening})`, backgroundSize: "cover", backgroundPosition: "center", filter: "brightness(0.83)" }} /><div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.03) 50%, rgba(0,0,0,0.25) 100%)" }} /><div style={{ position: "relative" }}><Leaf size={28} color={T.accent} style={{ marginBottom: 8 }} /><h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, margin: "0 0 8px", fontWeight: 700 }}>New to MÖV?</h3><p style={{ fontSize: 13, color: "#c8b8b0", margin: "0 0 16px", lineHeight: 1.5 }}>Get your first month of unlimited classes for only $49. Hot yoga, barre, candlelight, sculpt — try it all.</p><button onClick={() => setPage("membership")} style={{ padding: "12px 32px", borderRadius: 8, border: "none", fontWeight: 700, cursor: "pointer", background: T.accent, color: "#fff", fontSize: 16, fontFamily: "'Syne', sans-serif" }}>Join the MÖVment</button></div></div>); }
 function AdminCard({ title, children }) { return (<div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12, padding: 18 }}><h3 style={{ color: T.text, fontSize: 15, fontWeight: 700, margin: "0 0 14px" }}>{title}</h3>{children}</div>); }
 
 function ReservationModal({ classData, onConfirm, onClose }) {
@@ -1064,9 +1064,8 @@ function NotificationsModal({ onClose }) {
 // ═══════════════════════════════════════════════════════════════
 //  MAIN APP
 // ═══════════════════════════════════════════════════════════════
-export default function App() {
-  const [page, setPage] = useState("home");
-  const [isAdmin, setIsAdmin] = useState(false);
+export default function App({ startInAdmin = false, onEnterAdmin, onExitAdmin }) {
+  const [page, setPage] = useState(startInAdmin ? "admin-dashboard" : "home");
   const [showMore, setShowMore] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showNotifications, setShowNotifications] = useState(false);
@@ -1083,18 +1082,16 @@ export default function App() {
 
   const mainTabs = [
     { id: "home", label: "Home", icon: Home },
-    { id: "classes", label: "Classes", icon: CalendarDays },
+    { id: "schedule", label: "Schedule", icon: Calendar },
     { id: "practice", label: "Practice", icon: TrendingUp },
-    { id: "membership", label: "Plans", icon: CreditCard },
+    { id: "community", label: "Community", icon: Heart },
     { id: "more", label: "More", icon: Menu },
   ];
   const moreItems = [
-    { id: "schedule", label: "Schedule", icon: Calendar },
-    { id: "community", label: "Community", icon: Heart },
+    { id: "classes", label: "Classes", icon: CalendarDays },
     { id: "teachers", label: "Teachers", icon: Users },
-    { id: "cafe", label: "Cafe", icon: Coffee },
+    { id: "membership", label: "Membership", icon: CreditCard },
     { id: "events", label: "Events", icon: PartyPopper },
-    { id: "guest-passes", label: "Guest Passes", icon: Gift },
   ];
   const adminTabs = [
     { id: "admin-dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -1122,10 +1119,10 @@ export default function App() {
     }
   };
 
-  if (isAdmin) {
+  if (startInAdmin) {
     return (
       <AppContext.Provider value={{ page, setPage, classRegistrations, registerForClass, openReservation, feedCelebrations, celebrateFeed }}>
-        <div style={{ minHeight: "100vh", background: "#f3f4f6", fontFamily: "'DM Sans', system-ui, sans-serif", display: "flex" }}>
+        <div style={{ minHeight: "100vh", background: "#f3f4f6", fontFamily: "'DM Sans', system-ui, sans-serif", display: "flex", color: "#1a1a1a" }}>
           <aside style={{ width: 240, background: "#fff", borderRight: "1px solid #e5e7eb", display: "flex", flexDirection: "column", position: "fixed", top: 0, bottom: 0 }}>
             <div style={{ padding: "16px 14px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid #e5e7eb" }}>
               <div style={{ width: 36, height: 36, borderRadius: 8, background: T.accent, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Syne', sans-serif", fontSize: 16, color: "#fff", fontWeight: 700 }}>{STUDIO_CONFIG.logoMark}</div>
@@ -1135,7 +1132,7 @@ export default function App() {
               <p style={{ fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: T.textMuted, padding: "0 10px", margin: "0 0 8px" }}>Management</p>
               {adminTabs.map(tab => { const active = page === tab.id; return (<button key={tab.id} onClick={() => setPage(tab.id)} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "10px 12px", borderRadius: 8, border: "none", background: active ? T.accentGhost : "transparent", color: active ? T.accent : T.textMuted, fontSize: 13, fontWeight: active ? 600 : 400, cursor: "pointer", marginBottom: 2, textAlign: "left" }}><tab.icon size={18} /><span>{tab.label}</span>{active && <ChevronRight size={14} style={{ marginLeft: "auto", opacity: 0.6 }} />}</button>); })}
             </nav>
-            <div style={{ borderTop: "1px solid #e5e7eb", padding: "10px 8px" }}><button onClick={() => { setIsAdmin(false); setPage("home"); }} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "10px 12px", borderRadius: 8, border: "none", background: "transparent", color: T.textMuted, fontSize: 13, cursor: "pointer", textAlign: "left" }}><LogOut size={18} /><span>Exit Admin</span></button></div>
+            <div style={{ borderTop: "1px solid #e5e7eb", padding: "10px 8px" }}><button onClick={() => onExitAdmin?.()} style={{ display: "flex", alignItems: "center", gap: 10, width: "100%", padding: "10px 12px", borderRadius: 8, border: "none", background: "transparent", color: T.textMuted, fontSize: 13, cursor: "pointer", textAlign: "left" }}><LogOut size={18} /><span>Exit Admin</span></button></div>
           </aside>
           <main style={{ flex: 1, marginLeft: 240, padding: 24, overflow: "auto" }}>{renderPage()}</main>
         </div>
@@ -1143,131 +1140,62 @@ export default function App() {
     );
   }
 
-  const featureList = [
-    "Full class schedule with real-time availability",
-    "One-tap class reservations and waitlist",
-    "Practice tracking with streaks and milestones",
-    "Community feed with celebrations",
-    "Teacher profiles with specialties and bios",
-    "Events, workshops, and volunteer sign-ups",
-    "Guest pass sharing for members",
-    "Push notifications for class reminders",
-    "Membership management and pricing tiers",
-    "MÖV Marketplace cafe integration",
-    "Admin dashboard with analytics",
-    "Member management and broadcasting tools",
-  ];
-
   return (
     <AppContext.Provider value={{ page, setPage, classRegistrations, registerForClass, openReservation, feedCelebrations, celebrateFeed }}>
-      <div style={{ display: "flex", minHeight: "100vh", background: "#f3f4f6", fontFamily: "'DM Sans', system-ui, sans-serif" }}>
+      <div style={{ position: "absolute", inset: 0, fontFamily: "'DM Sans', system-ui, sans-serif", color: T.text, background: T.bgDim }}>
 
-        {/* LEFT SIDEBAR */}
-        <aside style={{ width: 280, flexShrink: 0, background: "#fff", borderRight: "1px solid #e5e7eb", display: "flex", flexDirection: "column", height: "100vh", position: "sticky", top: 0, overflow: "auto" }}>
-          <div style={{ padding: "24px 20px", borderBottom: "1px solid #e5e7eb" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <div style={{ width: 40, height: 40, borderRadius: 10, background: T.accent, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Syne', sans-serif", fontSize: 18, color: "#fff", fontWeight: 700 }}>{STUDIO_CONFIG.logoMark}</div>
-              <div>
-                <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, color: T.text, display: "block", lineHeight: 1, fontWeight: 700 }}>{STUDIO_CONFIG.name}</span>
-                <span style={{ fontSize: 9, color: T.textMuted, textTransform: "uppercase", letterSpacing: "0.12em" }}>{STUDIO_CONFIG.subtitle}</span>
+        {/* SCROLLABLE CONTENT AREA */}
+        <div ref={contentRef} style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 60, overflowY: "auto", scrollbarWidth: "none", msOverflowStyle: "none" }}>
+          <header style={{ position: "sticky", top: 0, zIndex: 30, background: T.bg, color: "#fff", padding: "10px 14px", paddingTop: 18, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <div style={{ width: 38, height: 38, borderRadius: 10, background: T.accent, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Syne', sans-serif", fontSize: 18, color: "#fff", fontWeight: 700 }}>{STUDIO_CONFIG.logoMark}</div>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 20, lineHeight: 1, letterSpacing: "-0.01em", fontWeight: 700 }}>{STUDIO_CONFIG.name}</span>
+                <span style={{ fontSize: 8, color: "#bfb3ad", textTransform: "uppercase", letterSpacing: "0.15em" }}>{STUDIO_CONFIG.subtitle}</span>
               </div>
             </div>
-            <p style={{ fontSize: 13, color: T.textMuted, lineHeight: 1.6, margin: 0 }}>{STUDIO_CONFIG.description}</p>
-          </div>
-          <div style={{ flex: 1, padding: "20px 20px 16px" }}>
-            <h3 style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: T.textMuted, margin: "0 0 12px" }}>App Features</h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {featureList.map((f, i) => (
-                <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
-                  <CheckCircle size={14} color={T.accent} style={{ flexShrink: 0, marginTop: 2 }} />
-                  <span style={{ fontSize: 13, color: T.text, lineHeight: 1.4 }}>{f}</span>
-                </div>
-              ))}
+            <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
+              <button onClick={() => onEnterAdmin?.()} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: T.accent }} title="Admin Dashboard"><Shield size={20} /></button>
+              <button onClick={() => setShowNotifications(true)} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: "#fff", position: "relative" }}><Bell size={20} />{unreadCount > 0 && <span style={{ position: "absolute", top: 4, right: 4, width: 14, height: 14, borderRadius: "50%", background: T.accent, fontSize: 9, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>{unreadCount}</span>}</button>
+              <button onClick={() => setShowSettings(true)} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: "#fff" }}><Settings size={20} /></button>
             </div>
-          </div>
-          <div style={{ padding: "16px 20px", borderTop: "1px solid #e5e7eb" }}>
-            <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: T.textMuted, margin: 0 }}>BUILT BY LUMI &mdash; LUMICLASS.APP</p>
-          </div>
-        </aside>
-
-        {/* CENTER — PHONE MOCKUP */}
-        <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "flex-start", padding: "32px 24px" }}>
-          <div style={{ width: 390, flexShrink: 0, background: T.bgDim, borderRadius: 32, boxShadow: "0 8px 40px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.06)", overflow: "hidden", position: "relative", border: "6px solid #1a1a1a" }}>
-            {/* Notch */}
-            <div style={{ position: "absolute", top: 0, left: "50%", transform: "translateX(-50%)", width: 120, height: 24, background: "#1a1a1a", borderRadius: "0 0 16px 16px", zIndex: 40 }} />
-            <div ref={contentRef} style={{ height: "85vh", maxHeight: 812, overflow: "auto" }}>
-              <header style={{ position: "sticky", top: 0, zIndex: 30, background: T.bg, color: "#fff", padding: "10px 14px", paddingTop: 28, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <div style={{ width: 38, height: 38, borderRadius: 10, background: T.accent, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Syne', sans-serif", fontSize: 18, color: "#fff", fontWeight: 700 }}>{STUDIO_CONFIG.logoMark}</div>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 20, lineHeight: 1, letterSpacing: "-0.01em", fontWeight: 700 }}>{STUDIO_CONFIG.name}</span>
-                    <span style={{ fontSize: 8, color: "#7a6e68", textTransform: "uppercase", letterSpacing: "0.15em" }}>{STUDIO_CONFIG.subtitle}</span>
-                  </div>
-                </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 2 }}>
-                  <button onClick={() => { setIsAdmin(true); setPage("admin-dashboard"); }} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: T.accent }}><Shield size={20} /></button>
-                  <button onClick={() => setShowNotifications(true)} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: "#fff", position: "relative" }}><Bell size={20} />{unreadCount > 0 && <span style={{ position: "absolute", top: 4, right: 4, width: 14, height: 14, borderRadius: "50%", background: T.accent, fontSize: 9, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>{unreadCount}</span>}</button>
-                  <button onClick={() => setShowSettings(true)} style={{ padding: 8, borderRadius: 8, border: "none", background: "transparent", cursor: "pointer", color: "#fff" }}><Settings size={20} /></button>
-                </div>
-              </header>
-              <main style={{ paddingBottom: 80 }}>{renderPage()}</main>
-            </div>
-            {showMore && (<div onClick={() => setShowMore(false)} style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,.5)", backdropFilter: "blur(4px)", zIndex: 40 }}><div onClick={e => e.stopPropagation()} style={{ position: "absolute", bottom: 68, left: 16, right: 16, background: T.bgCard, borderRadius: 16, padding: "14px 12px", boxShadow: "0 8px 32px rgba(0,0,0,.15)" }}><div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 6px 8px" }}><span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 600 }}>More</span><button onClick={() => setShowMore(false)} style={{ padding: 4, borderRadius: 6, border: "none", background: "transparent", cursor: "pointer" }}><X size={18} color={T.textMuted} /></button></div><div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>{moreItems.map(item => { const active = page === item.id; return (<button key={item.id} onClick={() => { setPage(item.id); setShowMore(false); }} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 6, padding: "14px 8px", borderRadius: 10, border: "none", cursor: "pointer", background: active ? T.accentGhost : T.bgDim, color: active ? T.accent : T.textMuted }}><item.icon size={22} /><span style={{ fontSize: 13, fontWeight: 600 }}>{item.label}</span></button>); })}</div></div></div>)}
-            <nav style={{ position: "absolute", bottom: 0, left: 0, right: 0, zIndex: 30, background: T.bgCard, borderTop: `1px solid ${T.border}` }}>
-              <div style={{ display: "flex", justifyContent: "space-around", padding: "6px 4px 10px" }}>
-                {mainTabs.map(tab => { const active = tab.id === "more" ? (isMoreActive || showMore) : page === tab.id;
-                  if (tab.id === "more") return (<button key={tab.id} onClick={() => setShowMore(true)} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, padding: "6px 12px", borderRadius: 10, border: "none", background: "transparent", cursor: "pointer", color: active ? T.accent : T.textFaint }}><tab.icon size={20} strokeWidth={active ? 2.5 : 2} /><span style={{ fontSize: 10, fontWeight: active ? 700 : 500 }}>{tab.label}</span></button>);
-                  return (<button key={tab.id} onClick={() => setPage(tab.id)} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, padding: "6px 12px", borderRadius: 10, border: "none", background: "transparent", cursor: "pointer", color: active ? T.accent : T.textFaint }}><tab.icon size={20} strokeWidth={active ? 2.5 : 2} /><span style={{ fontSize: 10, fontWeight: active ? 700 : 500 }}>{tab.label}</span></button>);
-                })}
-              </div>
-            </nav>
-            {showSettings && <SettingsModal onClose={() => setShowSettings(false)} />}
-            {showNotifications && <NotificationsModal onClose={() => setShowNotifications(false)} />}
-            {reservationClass && <ReservationModal classData={reservationClass} onConfirm={registerForClass} onClose={() => setReservationClass(null)} />}
-          </div>
+          </header>
+          <main style={{ paddingBottom: 20 }}>{renderPage()}</main>
         </div>
 
-        {/* RIGHT SIDEBAR */}
-        <aside style={{ width: 300, flexShrink: 0, background: "#fff", borderLeft: "1px solid #e5e7eb", display: "flex", flexDirection: "column", height: "100vh", position: "sticky", top: 0, overflow: "auto" }}>
-          <div style={{ padding: 20, display: "flex", flexDirection: "column", gap: 16 }}>
-            {/* Admin Dashboard Card */}
-            <div style={{ background: `linear-gradient(135deg, ${T.bg}, hsl(18,10%,14%))`, borderRadius: 14, padding: "20px 18px", color: "#fff" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                <div style={{ width: 36, height: 36, borderRadius: 8, background: T.accent, display: "flex", alignItems: "center", justifyContent: "center" }}><Shield size={18} color="#fff" /></div>
-                <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, margin: 0, fontWeight: 700 }}>Admin Dashboard</h3>
+        {/* MORE MENU BOTTOM SHEET */}
+        {showMore && (
+          <div onClick={() => setShowMore(false)} style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,.5)", backdropFilter: "blur(4px)", zIndex: 60 }}>
+            <div onClick={e => e.stopPropagation()} style={{ position: "absolute", bottom: 68, left: 16, right: 16, background: "#fff", borderRadius: 16, padding: "16px 14px", boxShadow: "0 8px 32px rgba(0,0,0,.18)", border: `1px solid ${T.border}` }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 6px 12px" }}>
+                <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, fontWeight: 600, color: T.text }}>More</span>
+                <button onClick={() => setShowMore(false)} style={{ padding: 4, borderRadius: 6, border: "none", background: "transparent", cursor: "pointer" }}><X size={18} color={T.textMuted} /></button>
               </div>
-              <p style={{ fontSize: 13, color: "#c8b8b0", lineHeight: 1.5, margin: "0 0 14px" }}>Full studio management built in -- member analytics, schedule management, broadcast messaging, and revenue tracking.</p>
-              <button onClick={() => { setIsAdmin(true); setPage("admin-dashboard"); }} style={{ width: "100%", padding: "10px 0", borderRadius: 8, border: "none", background: T.accent, color: "#fff", fontWeight: 700, fontSize: 14, cursor: "pointer" }}>Open Admin</button>
-            </div>
-
-            {/* Built for Studio Card */}
-            <div style={{ background: T.accentGhost, border: `1px solid ${T.accentBorder}`, borderRadius: 14, padding: "20px 18px" }}>
-              <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, margin: "0 0 8px", color: T.text, fontWeight: 700 }}>Built for {STUDIO_CONFIG.name}</h3>
-              <p style={{ fontSize: 13, color: T.textMuted, lineHeight: 1.6, margin: "0 0 12px" }}>This app was custom-designed for MÖV Hot Yoga + Barre in Uptown Minneapolis. It reflects their unique class formats, community-first culture, and on-site MÖV Marketplace cafe.</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                {["MÖV Classic, Flow, Barre, Sculpt, Candlelight formats", "8+ instructors with specialized training", "Simpson Housing volunteer integration", "MÖV Marketplace cafe ordering", "Hot room capacity management (35 spots)"].map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 6, fontSize: 12, color: T.text, lineHeight: 1.4 }}>
-                    <CheckCircle size={12} color={T.accent} style={{ flexShrink: 0, marginTop: 2 }} /><span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* All-in-One Platform Card */}
-            <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 14, padding: "20px 18px" }}>
-              <h3 style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, margin: "0 0 8px", color: T.text, fontWeight: 700 }}>All-in-One Platform</h3>
-              <p style={{ fontSize: 13, color: T.textMuted, lineHeight: 1.6, margin: "0 0 12px" }}>Replace your patchwork of scheduling tools, email platforms, and member databases with one unified studio app.</p>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                {[{ icon: Calendar, label: "Scheduling" }, { icon: Users, label: "Members" }, { icon: TrendingUp, label: "Analytics" }, { icon: Megaphone, label: "Messaging" }, { icon: CreditCard, label: "Payments" }, { icon: Heart, label: "Community" }].map((item, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, padding: "8px 10px", background: "#f9fafb", borderRadius: 8 }}>
-                    <item.icon size={14} color={T.accent} />
-                    <span style={{ fontSize: 12, fontWeight: 600, color: T.text }}>{item.label}</span>
-                  </div>
-                ))}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                {moreItems.map(item => { const active = page === item.id; return (
+                  <button key={item.id} onClick={() => { setPage(item.id); setShowMore(false); }} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, padding: "18px 10px", borderRadius: 12, border: `1px solid ${active ? T.accentBorder : T.border}`, cursor: "pointer", background: active ? T.accentGhost : "#fff", color: active ? T.accent : T.text }}>
+                    <item.icon size={24} />
+                    <span style={{ fontSize: 13, fontWeight: 600 }}>{item.label}</span>
+                  </button>
+                ); })}
               </div>
             </div>
           </div>
-        </aside>
+        )}
+
+        {/* BOTTOM NAV */}
+        <nav style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: 60, background: "#fff", borderTop: "1px solid #eee", zIndex: 50 }}>
+          <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center", height: "100%", padding: "0 4px" }}>
+            {mainTabs.map(tab => { const active = tab.id === "more" ? (showMore) : page === tab.id;
+              if (tab.id === "more") return (<button key={tab.id} onClick={() => setShowMore(true)} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, padding: "6px 12px", borderRadius: 10, border: "none", background: "transparent", cursor: "pointer", color: active ? T.accent : T.textFaint }}><tab.icon size={20} strokeWidth={active ? 2.5 : 2} /><span style={{ fontSize: 10, fontWeight: active ? 700 : 500 }}>{tab.label}</span></button>);
+              return (<button key={tab.id} onClick={() => setPage(tab.id)} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2, padding: "6px 12px", borderRadius: 10, border: "none", background: "transparent", cursor: "pointer", color: active ? T.accent : T.textFaint }}><tab.icon size={20} strokeWidth={active ? 2.5 : 2} /><span style={{ fontSize: 10, fontWeight: active ? 700 : 500 }}>{tab.label}</span></button>);
+            })}
+          </div>
+        </nav>
+
+        {showSettings && <SettingsModal onClose={() => setShowSettings(false)} />}
+        {showNotifications && <NotificationsModal onClose={() => setShowNotifications(false)} />}
+        {reservationClass && <ReservationModal classData={reservationClass} onConfirm={registerForClass} onClose={() => setReservationClass(null)} />}
 
       </div>
     </AppContext.Provider>
